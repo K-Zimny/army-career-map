@@ -33,7 +33,7 @@ export default function Loader({ isLoading, currentMilestone }) {
 
   return (
     <div className={isLoading ? "block" : "hidden"}>
-      <div className="absolute z-50 flex flex-col items-center inset-0 h-full w-full bg-army-tan text-primary-army-black text-center">
+      <div className="absolute z-50 flex flex-col items-center inset-0 h-full w-full bg-primary-army-black text-army-tan-light text-center">
         <div className="sticky top-1/3">
           <Image
             src="/loader.svg"

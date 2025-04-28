@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import useQuestionnaireStore from "../../store/questionnaireStore";
 import useSimulationStore from "@/store/simulationStore";
 import Questionnaire from "@/components/Questionnaire/Questionnaire";
 
@@ -10,9 +9,11 @@ import Loader from "@/components/loader/Loader";
 const QuestionnairePage = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const answers = useQuestionnaireStore.getState().answers;
-
-  const handleSubmit = async () => {
+  const handleSubmit = async (answers) => {
+    if (!answers || Object.keys(answers).length === 0) {
+      console.error("No answers provided. Cannot submit questionnaire.");
+      return;
+    }
     setIsLoading(true);
 
     try {
@@ -51,15 +52,16 @@ const QuestionnairePage = () => {
       window.location.href = "/simulate";
     } catch (error) {
       console.error("Error submitting questionnaire:", error);
+      setIsLoading(false);
     }
   };
 
   return (
     <>
       <Loader isLoading={isLoading} />
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="p-6 rounded w-full max-w-3xl">
-          <Questionnaire onSubmit={handleSubmit} />
+      <div className={`min-h-screen flex items-center justify-center`}>
+        <div className="p-6 min-h-screen rounded w-full max-w-3xl">
+          <Questionnaire onSubmit={(answers) => handleSubmit(answers)} />
         </div>
       </div>
     </>

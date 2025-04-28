@@ -7,34 +7,34 @@ import Eyebrow from "../eyebrow/Eyebrow";
 
 const mockData = [
   {
-    topic: "Infantryman Role",
+    topic: "Comprehensive Army Benefits",
     information:
-      "As an Infantryman, you are the backbone of the Army's ground forces, trained to defend the nation and engage enemy forces during combat.",
-    url: "https://www.goarmy.com/careers-and-jobs/career-match/ground-forces/infantry/infantryman.html",
+      "As a Soldier, you receive a robust benefits package, including up to 100% tuition coverage, low-cost health care, and up to $64K in your first year. Additional perks include up to $50K in bonuses and 30 paid days off annually.",
+    url: "https://www.goarmy.com/benefits/while-you-serve",
   },
   {
-    topic: "Sergeant Responsibilities",
+    topic: "Diverse Career Opportunities",
     information:
-      "As a Sergeant, you lead and mentor junior soldiers, oversee their training, and ensure the maintenance of equipment and supplies.",
-    url: "https://www.goarmy.com/army-life/intro-to-army-life/daily-routine/enlisted-sergeant",
+      "With over 200 career fields, the Army offers roles in mechanics, engineering, science, medicine, signal intelligence, support, logistics, ground forces, aviation, and aerial defense, catering to various interests and skills.",
+    url: "https://www.goarmy.com/careers-and-jobs.html",
   },
   {
-    topic: "Expert Infantryman Badge",
+    topic: "Educational Support",
     information:
-      "Earning the Expert Infantryman Badge signifies mastery of critical infantry skills, demonstrating your proficiency and dedication to excellence.",
-    url: "https://www.goarmy.com/careers-and-jobs/career-match/ground-forces/infantry/infantryman.html#training",
+      "The Army provides educational benefits like the GI Bill, covering tuition, housing stipends, and support for books and supplies, enabling you to pursue higher education with financial assistance.",
+    url: "https://www.goarmy.com/benefits/while-you-serve/education-training/gi-bill",
   },
   {
-    topic: "Leadership Training",
+    topic: "Family Support Programs",
     information:
-      "The Army offers leadership courses designed to enhance your tactical and operational skills, preparing you for greater responsibilities.",
-    url: "https://www.goarmy.com/careers-and-jobs/career-match/ground-forces/infantry/infantryman.html#career-path",
+      "Soldiers' families have access to high-quality, low-cost health care through TRICARE, along with housing allowances and family support services, ensuring comprehensive care for your loved ones.",
+    url: "https://www.goarmy.com/benefits/family",
   },
   {
-    topic: "Overseas Deployments",
+    topic: "Financial Planning Resources",
     information:
-      "Deploying overseas provides invaluable experience, exposing you to diverse environments and strengthening your combat readiness.",
-    url: "https://www.goarmy.com/army-life/intro-to-army-life/daily-routine/enlisted-sergeant",
+      "The Army offers financial planning resources, including tax deductions, savings accounts like the Thrift Savings Plan (TSP), and financial classes to help you manage your finances effectively.",
+    url: "https://www.goarmy.com/benefits/while-you-serve/perks-incentives",
   },
 ];
 
@@ -83,7 +83,7 @@ export default function MoreDetails({ milestone }) {
       }
 
       // Only keep the first 3 items
-      setDetailsList(data.slice(0, 3));
+      setDetailsList(data.slice(0, 5));
     } catch (error) {
       console.error("Error fetching More Details:", error.message);
       setError(error.message);
@@ -147,10 +147,12 @@ export default function MoreDetails({ milestone }) {
           <div className="space-y-6">
             {detailsList.map((item, index) => (
               <div key={index}>
-                <Eyebrow>{item.topic}</Eyebrow>
+                <Eyebrow>
+                  <a className="underline" href={item.url}>
+                    {item.topic}
+                  </a>
+                </Eyebrow>
                 <p className="text-sm mt-2">{item.information}</p>
-                {/* Optional: Show source link */}
-                <p className="mt-2 text-xs text-gray-500">Source: {item.url}</p>
               </div>
             ))}
           </div>

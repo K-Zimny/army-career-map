@@ -12,10 +12,16 @@ const useQuestionnaireStore = create(
         })),
 
       resetAnswers: () => set({ answers: {} }),
+      hydrated: false,
+      setHydrated: () => set({ hydrated: true }),
     }),
     {
       name: "questionnaire-store", // Key for localStorage
       getStorage: () => localStorage, // Use localStorage for persistence
+      onRehydrateStorage: () => (state) => {
+        console.log("Rehydrating questionnaire store...");
+        state?.setHydrated();
+      },
     }
   )
 );

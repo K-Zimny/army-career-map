@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import Question from "./Question";
 import { questions } from "@/data/questionnaire";
 import useQuestionnaireStore from "@/store/questionnaireStore";
-import ArrowIcon from "@/assets/icons/arrow.svg";
+import ArrowIconWhite from "@/assets/icons/arrow-white.svg";
+import ArrowIconGold from "@/assets/icons/arrow-gold.svg";
 import ProgressBar from "../ProgressBar/ProgressBar";
 
 const Questionnaire = ({ onSubmit }) => {
@@ -35,14 +36,31 @@ const Questionnaire = ({ onSubmit }) => {
       />
       <div className="flex justify-end mt-[45px]">
         {currentQuestionIndex > 0 && (
-          <button className="px-4 py-2 rounded" onClick={handleBack}>
+          <button
+            className="px-4 py-2 rounded hover:text-army-gold"
+            onClick={handleBack}
+          >
             Back
           </button>
         )}
-        <button className="px-4 py-2 rounded font-bold" onClick={handleNext}>
-          {currentQuestionIndex < questions.length - 1 ? "Next" : "Submit"}
+        <button
+          className="group flex px-4 py-2 rounded font-bold text-army-tan-light hover:text-army-gold"
+          onClick={handleNext}
+        >
+          <div className="self-center pr-2">
+            {currentQuestionIndex < questions.length - 1 ? "Next" : "Submit"}
+          </div>
+          <img
+            src={ArrowIconWhite}
+            alt="Arrow Icon"
+            className="group-hover:hidden"
+          />
+          <img
+            src={ArrowIconGold}
+            alt="Arrow Icon"
+            className="hidden group-hover:block"
+          />
         </button>
-        <img src={ArrowIcon} alt="Arrow Icon" className="" />
       </div>
     </div>
   );

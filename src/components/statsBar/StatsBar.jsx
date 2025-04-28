@@ -7,7 +7,6 @@ export default function StatsBar({ rank, age, salary }) {
     <ul className="my-8 flex flex-row justify-between gap-2">
       <li className="flex gap-2 items-center">
         <Image src="/rank.svg" alt="Rank" height={25} width={20} />
-        {/* <span className="font-bold text-sm">Rank: {rank}</span> */}
         <Eyebrow className="!mb-0">Rank: {rank}</Eyebrow>
       </li>
       <li className="flex gap-2 items-center">

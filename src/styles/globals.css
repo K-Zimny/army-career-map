@@ -1,6 +1,7 @@
 @import "tailwindcss";
 :root {
   --Primary-Army-Black: #221f20;
+  --Primary-Army-Black-Light: #2c292a;
   --Army-White: #fff;
   --Medium-Grey: #bcbcbc;
   --Army-Gold: #ffcc01;
@@ -13,6 +14,7 @@
 @theme {
   --color-army-gold: var(--Army-Gold);
   --color-primary-army-black: var(--Primary-Army-Black);
+  --color-primary-army-black-light: var(--Primary-Army-Black-Light);
   --color-army-white: var(--Army-White);
   --color-medium-grey: var(--Medium-Grey);
   --color-army-tan: var(--Army-Tan);
@@ -64,7 +66,7 @@
 
 body {
   background: var(--background);
-  color: var(--Army-Tan);
+  color: var(--Army-White);
   font-family: "Army-GI", Arial, Helvetica, sans-serif;
 }
 

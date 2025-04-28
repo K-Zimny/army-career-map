@@ -52,7 +52,9 @@ export default async function handler(req, res) {
             education: number,
             training: number
         }
-        - description: Friendly & somwhat detailed summary of what happened during this stage. Here's an example: "Congratulations, you are joining the Army as an 11B, Infantryman! You are heading to Fort Benning, GA for Basic Combat Training and will remain there for Advanced Individual Training. You will learn to be a Soldier first, and then Infantry specialties like battle drills and warfighting skills. Once your training is complete, you are heading to your first duty station: Schoefield Barracks, Hawaii! You will be there for the next three years, training with your unit and preparing for future Army missions. You will be a Private First Class upon arrival in Hawaii, and will earn the rank of Sergeant by the time you are leaving, congrats, Sarge!"
+        - description: 1-3 sentence friendly summary of what happened during this stage. You must include some detail about a personal goal the user has achieved based on their goals from ${
+          answers.q5
+        }, if provided. Here's an example: "Congratulations, you are joining the Army as an 11B, Infantryman! You are heading to Fort Benning, GA for Basic Combat Training and will remain there for Advanced Individual Training. You will learn to be a Soldier first, and then Infantry specialties like battle drills and warfighting skills. Once your training is complete, you are heading to your first duty station: Schoefield Barracks, Hawaii! You will be there for the next three years, training with your unit and preparing for future Army missions. You will be a Private First Class upon arrival in Hawaii, and will earn the rank of Sergeant by the time you are leaving, congrats, Sarge!"
         - achievements: array of key wins or life events (e.g. “Promoted to CPT”, “Bought a home”)
         - choices: [
           choice 1 object: Short, interesting & fun choice for the user to make at this milestone, with an id & brief description

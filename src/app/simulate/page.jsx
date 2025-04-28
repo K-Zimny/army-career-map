@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import useSimulationStore from "../../store/simulationStore";
+import useQuestionnaireStore from "@/store/questionnaireStore";
 import Image from "next/image";
 import Loader from "@/components/loader/Loader";
 import MoreDetails from "@/components/moreDetails/MoreDetails"; // <-- Updated import
@@ -10,25 +11,39 @@ import StatsBar from "@/components/statsBar/StatsBar";
 import Eyebrow from "@/components/eyebrow/Eyebrow";
 import Option from "@/components/option/Option";
 import ProgressBar from "@/components/ProgressBar/ProgressBar";
+import LineChart from "@/components/charts/LineChart/LineChart";
+import PieChart from "@/components/charts/PieChart/PieChart";
 
 const SimulatePage = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const { currentMilestone, setCurrentMilestone, addChoice, choices, setPath } =
-    useSimulationStore();
+  const {
+    currentMilestone,
+    setCurrentMilestone,
+    addChoice,
+    choices,
+    setPath,
+    path,
+  } = useSimulationStore();
+  const { answers } = useQuestionnaireStore();
 
   useEffect(() => {
     let isMounted = true;
 
     const fetchInitialMilestone = async () => {
-      console.log("Fetching initial milestone...");
+      console.log("Fetching initial milestone...", {
+        answers,
+        choices: [],
+        path: [],
+      });
       try {
+        console.log("Answers being sent to the API:", answers);
         const response = await fetch("/api/generateCareerPath", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ answers: {}, choices: [] }),
+          body: JSON.stringify({ answers, choices: [], path: [] }),
         });
 
         if (!response.ok) {
@@ -67,7 +82,7 @@ const SimulatePage = () => {
     return () => {
       isMounted = false;
     };
-  }, [setCurrentMilestone]);
+  }, [setCurrentMilestone, answers]);
 
   const handleChoice = async (choice) => {
     setIsLoading(true);
@@ -81,7 +96,7 @@ const SimulatePage = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          answers: {},
+          answers,
           choices: [...choices, choice],
           path: useSimulationStore.getState().path,
         }),
@@ -109,8 +124,23 @@ const SimulatePage = () => {
     return <Loader isLoading={isLoading} />; // Still loading...
   }
 
+  const financialData = path.map((milestone) => ({
+    year: `Year ${milestone.year}`,
+    salary: milestone.currentSalary,
+    savings: milestone.savings,
+    retirementAccount: milestone.retirementAccount,
+    debt: milestone.debt,
+  }));
+
+  const benefitsData = Object.entries(currentMilestone.benefits).map(
+    ([key, value]) => ({
+      name: key.charAt(0).toUpperCase() + key.slice(1), // Capitalize the key
+      value,
+    })
+  );
+
   return (
-    <div className="bg-army-tan-light text-primary-army-black pt-18">
+    <div className="bg-primary-army-black text-army-tan-light pt-18">
       <Loader isLoading={isLoading} currentMilestone={currentMilestone} />
       <div className="p-4 max-w-3xl mx-auto">
         <section className="mb-8">
@@ -124,10 +154,10 @@ const SimulatePage = () => {
           </h1>
           <Image
             className="w-full"
-            src="/user-image.png"
-            alt="User Image"
-            width={300}
-            height={300}
+            src="/jane.svg"
+            alt="Jane Doe"
+            width={768}
+            height={554}
           />
 
           <StatsBar
@@ -135,12 +165,12 @@ const SimulatePage = () => {
             age={currentMilestone.age}
             salary={currentMilestone.currentSalary}
           ></StatsBar>
-          {/* <ComponentWrapper>
-            <Eyebrow type="bigger">Summary</Eyebrow> */}
-          <p className="mb-8 text-lg">{currentMilestone.description}</p>
-          {/* </ComponentWrapper> */}
-
           <ComponentWrapper>
+            <Eyebrow type="bigger">Summary</Eyebrow>
+            <p className="text-lg">{currentMilestone.description}</p>
+          </ComponentWrapper>
+
+          {/* <ComponentWrapper>
             <Eyebrow type="bigger">Financial Snapshot</Eyebrow>
             <p className="mb-2">
               Current Salary: ${currentMilestone.currentSalary}
@@ -162,28 +192,55 @@ const SimulatePage = () => {
                 )
               )}
             </ul>
-          </ComponentWrapper>
+          </ComponentWrapper> */}
 
-          {/* "More Details" section that resets when milestone changes */}
-          <MoreDetails
-            key={currentMilestone.year}
-            milestone={currentMilestone}
-          />
+          <ComponentWrapper>
+            <Eyebrow type="bigger">Financial Snapshot</Eyebrow>
+            <div className="flex flex-col md:flex-row gap-8">
+              <LineChart
+                data={financialData}
+                title="Earnings & Savings"
+                xKey="year"
+                lines={[
+                  { dataKey: "salary", color: "#221f20", label: "Salary" },
+                  { dataKey: "savings", color: "#2F372F", label: "Savings" },
+                  {
+                    dataKey: "retirementAccount",
+                    color: "#ffcc01",
+                    label: "Retirement Account",
+                  },
+                  { dataKey: "debt", color: "#BFB8A6", label: "Debt" },
+                ]}
+              />
+              <PieChart data={benefitsData} title="Benefits" />
+            </div>
+          </ComponentWrapper>
         </section>
         <section className="mt-8">
           <Eyebrow type="bigger" className="mb-12 mt-12">
             What&apos;s Next
           </Eyebrow>
           <div className="flex flex-col gap-4">
-            {currentMilestone.choices.map((choice, index) => (
-              <Option
-                key={index}
-                choice={choice}
-                index={index}
-                description={choice.description}
-                onClick={() => handleChoice(choice)}
-              ></Option>
-            ))}
+            {currentMilestone.year === 20 ? (
+              // Show "See a Summary" button only on the final 20-year milestone
+              <button
+                className={`text-lg uppercase text-center w-full p-[18px] rounded-[9px] mb-[18px] border border-army-tan-light hover:bg-army-tan-light hover:text-primary-army-black hover:font-bold`}
+                onClick={() => (window.location.href = "/results")}
+              >
+                See a Summary
+              </button>
+            ) : (
+              // Render choices for other milestones
+              currentMilestone.choices.map((choice, index) => (
+                <Option
+                  key={index}
+                  choice={choice}
+                  index={index}
+                  description={choice.description}
+                  onClick={() => handleChoice(choice)}
+                ></Option>
+              ))
+            )}
           </div>
         </section>
       </div>

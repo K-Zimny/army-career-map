@@ -20,22 +20,22 @@ const Question = ({ question, selectedAnswer, onAnswer }) => {
 
   return (
     <div>
-      <div className="text-[14px] mb-[45px] text-left font-bold uppercase leading-[36px]">
+      <div className="text-[14px] mb-[45px] text-left font-bold uppercase leading-[36px] text-army-tan-light">
         {question.id.replace("q", "")}/5
       </div>
-      <h2 className="text-[27px] mb-[45px] text-left font-normal leading-[36px]">
+      <h2 className="text-[27px] mb-[45px] text-left font-normal leading-[36px] text-army-tan-light">
         {question.question}
       </h2>
       <ul className="mt-4">
         {question.options.map((option) => (
           <li key={option}>
             <button
-              className={`w-full text-[14px] text-left p-[18px] rounded-[9px] mb-[18px] border border-army-tan hover:bg-army-tan hover:text-primary-army-black ${
+              className={`w-full text-[14px] text-army-tan-light text-left p-[18px] rounded-[9px] mb-[18px] border border-army-tan-light hover:bg-army-tan-light hover:text-primary-army-black ${
                 Array.isArray(selectedAnswer) && selectedAnswer.includes(option)
-                  ? "bg-army-tan text-primary-army-black"
+                  ? "bg-army-tan-light text-primary-army-black"
                   : selectedAnswer === option
-                  ? "bg-army-tan text-primary-army-black"
-                  : "bg-primary-army-black text-army-tan"
+                  ? "bg-army-tan-light text-primary-army-black"
+                  : "bg-primary-army-black text-army-tan-light"
               }`}
               onClick={() => handleOptionClick(option)}
             >
