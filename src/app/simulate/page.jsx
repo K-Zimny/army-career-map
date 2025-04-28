@@ -202,8 +202,8 @@ const SimulatePage = () => {
                 title="Earnings & Savings"
                 xKey="year"
                 lines={[
-                  { dataKey: "salary", color: "#221f20", label: "Salary" },
-                  { dataKey: "savings", color: "#2F372F", label: "Savings" },
+                  { dataKey: "salary", color: "#fff", label: "Salary" },
+                  { dataKey: "savings", color: "#f1e4c7", label: "Savings" },
                   {
                     dataKey: "retirementAccount",
                     color: "#ffcc01",

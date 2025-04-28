@@ -18,7 +18,14 @@ const LineChart = ({ data, xKey, lines, title }) => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey={xKey} />
           <YAxis />
-          <Tooltip formatter={(value) => `$${value.toLocaleString()}`} />
+          <Tooltip
+            formatter={(value) => `$${value.toLocaleString()}`}
+            contentStyle={{
+              backgroundColor: "#2c292a", // Set the background color
+              borderRadius: "8px", // Optional: Add rounded corners
+              border: "1px solid #ccc", // Optional: Add a border
+            }}
+          />
           {lines.map((line) => (
             <Line
               key={line.dataKey}

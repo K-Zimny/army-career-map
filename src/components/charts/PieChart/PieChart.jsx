@@ -42,17 +42,38 @@ const renderActiveShape = (props) => {
         y={cy}
         dy={-5}
         textAnchor="middle"
-        fill="#333"
+        fill="#fff"
         fontSize={14}
         fontWeight="bold"
       >
         {payload.name}
       </text>
-      <text x={cx} y={cy} dy={20} textAnchor="middle" fill="#666" fontSize={12}>
+      <text x={cx} y={cy} dy={20} textAnchor="middle" fill="#fff" fontSize={12}>
         {`$${value.toLocaleString()}`}
       </text>
     </g>
   );
+};
+
+const CustomTooltip = ({ active, payload }) => {
+  if (active && payload && payload.length) {
+    return (
+      <div
+        style={{
+          backgroundColor: "#2c292a", // Dark background
+          border: "1px solid #ccc", // Light border
+          borderRadius: "8px", // Rounded corners
+          padding: "10px", // Padding for spacing
+          color: "#fff", // White text color
+        }}
+      >
+        <p style={{ margin: 0 }}>{payload[0].name}</p>
+        <p style={{ margin: 0 }}>{`$${payload[0].value.toLocaleString()}`}</p>
+      </div>
+    );
+  }
+
+  return null;
 };
 
 const PieChart = ({ data, title }) => {
@@ -75,7 +96,7 @@ const PieChart = ({ data, title }) => {
             cy="40%"
             innerRadius={80} // Increased inner radius
             outerRadius={120} // Increased outer radius
-            fill="#8884d8"
+            fill="#fff"
             dataKey="value"
             onMouseEnter={onPieEnter}
           >
@@ -86,7 +107,6 @@ const PieChart = ({ data, title }) => {
               />
             ))}
           </Pie>
-          <Tooltip formatter={(value) => `$${value.toLocaleString()}`} />
         </RechartsPieChart>
       </ResponsiveContainer>
     </div>
