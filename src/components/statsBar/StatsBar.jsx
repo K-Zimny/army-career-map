@@ -14,7 +14,7 @@ export default function StatsBar({ rank, age, salary }) {
   };
 
   return (
-    <ul className="my-8 flex flex-row justify-between gap-2">
+    <ul className="mt-8 mb-[45px] flex flex-row justify-between gap-2">
       <li className="flex gap-2 items-center">
         <Image src="/rank.svg" alt="Rank" height={25} width={20} />
         <Eyebrow className="!mb-0">Rank: {rank.shortTitle}</Eyebrow>

@@ -56,7 +56,7 @@ export default async function handler(req, res) {
             education: number,
             training: number
         }
-        - benefitInfo: choose one benefit from the mileestone to highlight, with: {
+        - benefitInfo: choose one benefit from the mileestone to highlight, with the following. Special note for Milestone 5 (Year 20): This benefit should be about the user's pension and include the monthly value {
           title: short title describing a benefit specific to this milestone "e.g. ROTC, Tuition Assistance, Healthcare, etc."
           description: description of the benefit "e.g. 'You are receiving full tuition coverage for your college education through the ROTC program, which will help you graduate debt-free.'"
         }

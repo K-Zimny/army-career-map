@@ -5,6 +5,7 @@ import useSimulationStore from "@/store/simulationStore";
 import Questionnaire from "@/components/Questionnaire/Questionnaire";
 
 import Loader from "@/components/loader/Loader";
+import Walkthrough from "@/components/walkthrough/Walkthrough";
 
 const QuestionnairePage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -59,9 +60,12 @@ const QuestionnairePage = () => {
   return (
     <>
       <Loader isLoading={isLoading} />
-      <div className={`min-h-screen flex items-center justify-center`}>
-        <div className="p-6 min-h-screen rounded w-full max-w-3xl">
-          <Questionnaire onSubmit={(answers) => handleSubmit(answers)} />
+      <div className="flex flex-row justify-center">
+        <Walkthrough />
+        <div className={`min-h-screen flex items-center justify-center w-full`}>
+          <div className="p-6 min-h-screen rounded w-full max-w-[450px] bg-primary-army-black">
+            <Questionnaire onSubmit={(answers) => handleSubmit(answers)} />
+          </div>
         </div>
       </div>
     </>

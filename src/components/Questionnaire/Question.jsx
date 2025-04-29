@@ -23,10 +23,15 @@ const Question = ({ question, selectedAnswer, onAnswer }) => {
       <div className="text-[14px] mb-[45px] text-left font-bold uppercase leading-[36px] text-army-tan-light">
         {question.id.replace("q", "")}/5
       </div>
-      <h2 className="text-[27px] mb-[45px] text-left font-normal leading-[36px] text-army-tan-light">
+      <h2 className="text-[27px] text-left font-normal leading-[36px] text-army-tan-light">
         {question.question}
       </h2>
-      <ul className="mt-4">
+      {question.subtitle && (
+        <h3 className="text-[18px] mt-[18px] text-army-tan-light">
+          {question.subtitle}
+        </h3>
+      )}
+      <ul className="mt-[45px]">
         {question.options.map((option) => (
           <li key={option}>
             <button

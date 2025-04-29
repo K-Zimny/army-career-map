@@ -7,7 +7,7 @@
   --Army-Gold: #ffcc01;
   --Army-Tan: #f1e4c7;
   --Army-Tan-Light: #fcf6eb;
-  --background: var(--Primary-Army-Black);
+  --background: var(--Primary-Army-Black-Light);
 }
 
 /* Allows for inline tailwind variables */
@@ -70,6 +70,10 @@ body {
   font-family: "Army-GI", Arial, Helvetica, sans-serif;
 }
 
+p {
+  color: var(--color-army-tan-light);
+}
+
 /* Animations */
 
 @keyframes spin {
@@ -88,18 +92,3 @@ body {
 .spinner-slow {
   animation: spin 10s linear infinite;
 }
-
-/*
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-} */

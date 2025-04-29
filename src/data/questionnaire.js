@@ -13,6 +13,7 @@ export const questions = [
     id: "q2",
     allowMultiple: true,
     question: "What kind of work are you interested in?",
+    subtitle: "Select all that apply.",
     options: [
       "Working with machinery or construction",
       "Caring for the health and safety of others",
@@ -46,6 +47,7 @@ export const questions = [
     id: "q5",
     allowMultiple: true,
     question: "What are your personal goals?",
+    subtitle: "Select all that apply.",
     options: [
       "Own my own home",
       "Start a family",

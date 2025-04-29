@@ -26,7 +26,7 @@ const Questionnaire = ({ onSubmit }) => {
   };
 
   return (
-    <div className="max-w-3xl">
+    <div className="max-w-[450px]">
       <ProgressBar position="quarter" text={`Intro`} />
       <div className="bar"></div>
       <Question
