@@ -13,6 +13,7 @@ import Option from "@/components/option/Option";
 import ProgressBar from "@/components/ProgressBar/ProgressBar";
 import LineChart from "@/components/charts/LineChart/LineChart";
 import PieChart from "@/components/charts/PieChart/PieChart";
+import AccordionWrapper from "@/components/accordionwrapper/AccordionWrapper";
 
 const SimulatePage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -124,23 +125,8 @@ const SimulatePage = () => {
     return <Loader isLoading={isLoading} />; // Still loading...
   }
 
-  const financialData = path.map((milestone) => ({
-    year: `Year ${milestone.year}`,
-    salary: milestone.currentSalary,
-    savings: milestone.savings,
-    retirementAccount: milestone.retirementAccount,
-    debt: milestone.debt,
-  }));
-
-  const benefitsData = Object.entries(currentMilestone.benefits).map(
-    ([key, value]) => ({
-      name: key.charAt(0).toUpperCase() + key.slice(1), // Capitalize the key
-      value,
-    })
-  );
-
   return (
-    <div className="bg-primary-army-black text-army-tan-light pt-18">
+    <div className="bg-primary-army-black text-army-tan-light">
       <Loader isLoading={isLoading} currentMilestone={currentMilestone} />
       <div className="p-4 max-w-3xl mx-auto">
         <section className="mb-8">
@@ -158,6 +144,7 @@ const SimulatePage = () => {
             alt="Jane Doe"
             width={768}
             height={554}
+            priority
           />
 
           <StatsBar
@@ -170,57 +157,40 @@ const SimulatePage = () => {
             <p className="text-lg">{currentMilestone.description}</p>
           </ComponentWrapper>
 
-          {/* <ComponentWrapper>
-            <Eyebrow type="bigger">Financial Snapshot</Eyebrow>
+          <AccordionWrapper
+            title={`${currentMilestone.rank.title} (${currentMilestone.rank.shortTitle})`}
+          >
+            <p className="mb-2">{currentMilestone.rank.description}</p>
+          </AccordionWrapper>
+
+          <AccordionWrapper title={`${currentMilestone.benefitInfo.title}`}>
+            <p className="mb-2">{currentMilestone.benefitInfo.description}</p>
+          </AccordionWrapper>
+
+          <AccordionWrapper title="Compensation">
             <p className="mb-2">
-              Current Salary: ${currentMilestone.currentSalary}
-            </p>
-            <p className="mb-2">Savings: ${currentMilestone.savings}</p>
-            <p className="mb-2">
-              Retirement Account: ${currentMilestone.retirementAccount}
-            </p>
-            <p className="mb-2">Debt: ${currentMilestone.debt}</p>
-            <p className="mb-2">
-              Benefit Value to Date: ${currentMilestone.benefitValueToDate}
+              Your total compensation is $
+              {currentMilestone.currentSalary +
+                currentMilestone.benefitValueToDate}
+              , here's how it breaks down:
             </p>
             <ul className="list-disc list-inside mt-4">
+              <li>Base Salary: ${currentMilestone.currentSalary}</li>
               {Object.entries(currentMilestone.benefits).map(
                 ([key, value], index) => (
                   <li key={index}>
-                    {key}: ${value}
+                    {key.charAt(0).toUpperCase() + key.slice(1)}: ${value}
                   </li>
                 )
               )}
             </ul>
-          </ComponentWrapper> */}
-
-          <ComponentWrapper>
-            <Eyebrow type="bigger">Financial Snapshot</Eyebrow>
-            <div className="flex flex-col md:flex-row gap-8">
-              <LineChart
-                data={financialData}
-                title="Earnings & Savings"
-                xKey="year"
-                lines={[
-                  { dataKey: "salary", color: "#fff", label: "Salary" },
-                  { dataKey: "savings", color: "#f1e4c7", label: "Savings" },
-                  {
-                    dataKey: "retirementAccount",
-                    color: "#ffcc01",
-                    label: "Retirement Account",
-                  },
-                  { dataKey: "debt", color: "#BFB8A6", label: "Debt" },
-                ]}
-              />
-              <PieChart data={benefitsData} title="Benefits" />
-            </div>
-          </ComponentWrapper>
+          </AccordionWrapper>
         </section>
         <section className="mt-8">
           <Eyebrow type="bigger" className="mb-12 mt-12">
             What&apos;s Next
           </Eyebrow>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col">
             {currentMilestone.year === 20 ? (
               // Show "See a Summary" button only on the final 20-year milestone
               <button

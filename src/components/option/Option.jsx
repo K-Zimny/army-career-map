@@ -2,12 +2,19 @@ import Eyebrow from "../eyebrow/Eyebrow";
 
 export default function Option({ index, description, onClick }) {
   return (
-    <button
-      onClick={onClick}
-      className="cursor-pointer text-left p-4 w-full text-[14px] rounded-[9px] mb-[18px] border  border-primary-army-black bg-primary-army-black-light text-army-tan-light hover:bg-army-tan-light hover:text-primary-army-black "
-    >
-      <Eyebrow>Option {index + 1}</Eyebrow>
-      <p className="text-xl mt-8">{description}</p>
-    </button>
+    <>
+      <div className="mb-4">
+        <div className="bg-primary-army-black-light text-army-white px-[18px] py-[27px] rounded-t-2xl">
+          <Eyebrow>Option {index + 1}</Eyebrow>
+          <p className="text-xl mt-8">{description}</p>
+        </div>
+        <button
+          onClick={onClick}
+          className="p-4 w-full bg-army-white text-primary-army-black rounded-b-2xl hover:bg-army-gold text-md font-semibold uppercase"
+        >
+          Option {index + 1}
+        </button>
+      </div>
+    </>
   );
 }

@@ -7,6 +7,8 @@ import useSimulationStore from "@/store/simulationStore";
 import ProgressBar from "@/components/ProgressBar/ProgressBar";
 import ArrowIconGold from "@/assets/icons/arrow-gold.svg";
 import ArrowIconBlack from "@/assets/icons/arrow-black.svg";
+import CustomText from "@/components/customtext/CustomText";
+import Image from "next/image";
 
 const HomePage = () => {
   const router = useRouter();
@@ -23,12 +25,31 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="flex justify-center">
-        <div className="p-4 max-w-3xl min-h-screen flex flex-col items-start justify-center">
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="p-6 min-h-screen rounded w-full max-w-3xl">
           <ProgressBar position="left" text="Welcome" />
-          <h1 className="text-4xl text-army-tan-light font-normal mb-6 mt-[27px]">
-            Welcome! Let's map your Army journey.
-          </h1>
+          <CustomText
+            segments={[
+              {
+                text: "Welcome Jane! ",
+                className:
+                  "text-[27px] md:text-[36px] font-normal text-army-tan-light",
+              },
+              {
+                text: "Let's map your Army journey.",
+                className:
+                  "text-[27px] md:text-[36px] font-normal text-army-gold",
+              },
+            ]}
+          />
+          <Image
+            className="w-full my-8"
+            src="/jane.svg"
+            alt="Jane Doe"
+            width={768}
+            height={554}
+            priority
+          />
           <p className="text-lg text-army-tan-light mb-8 text-left">
             In just a few taps, we'll start building a career path that's
             specific to your interests and goals.

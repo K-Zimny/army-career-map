@@ -39,7 +39,11 @@ export default async function handler(req, res) {
         - id: string (e.g. "custom-1")
         - year: number (starting at 1, then 5, 10, 15, 20)
         - age: number (starting around 18–22, increasing accordingly)
-        - rank: string (e.g. “PVT”, “CPT”, “MAJ”)
+        - rank: {
+          shortTitle: string (e.g. "PVT")
+          title: string (e.g. "Private")
+          description: one-two sentence string describing rank (e.g. "The entry-level rank for enlisted Soldiers. Soldiers at this rank are new to the Army and are learning basic skills and duties.")
+        }
         - currentSalary: current salary (e.g. 50000)
         - savings: total saved by that year
         - retirementAccount: estimated TSP balance
@@ -51,6 +55,10 @@ export default async function handler(req, res) {
             healthcare: number,
             education: number,
             training: number
+        }
+        - benefitInfo: choose one benefit from the mileestone to highlight, with: {
+          title: short title describing a benefit specific to this milestone "e.g. ROTC, Tuition Assistance, Healthcare, etc."
+          description: description of the benefit "e.g. 'You are receiving full tuition coverage for your college education through the ROTC program, which will help you graduate debt-free.'"
         }
         - description: 1-3 sentence friendly summary of what happened during this stage. You must include some detail about a personal goal the user has achieved based on their goals from ${
           answers.q5

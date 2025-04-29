@@ -2,12 +2,22 @@ import Image from "next/image";
 import Eyebrow from "../eyebrow/Eyebrow";
 
 export default function StatsBar({ rank, age, salary }) {
-  const formattedSalary = salary.toString().slice(0, 2);
+  const formatSalary = (salary) => {
+    const salarySting = salary.toString();
+    if (salarySting.toString().length == 5) {
+      return salarySting.slice(0, 2);
+    } else if (salarySting.toString().length == 6) {
+      return salarySting.slice(0, 3);
+    } else {
+      return salarySting.toString();
+    }
+  };
+
   return (
     <ul className="my-8 flex flex-row justify-between gap-2">
       <li className="flex gap-2 items-center">
         <Image src="/rank.svg" alt="Rank" height={25} width={20} />
-        <Eyebrow className="!mb-0">Rank: {rank}</Eyebrow>
+        <Eyebrow className="!mb-0">Rank: {rank.shortTitle}</Eyebrow>
       </li>
       <li className="flex gap-2 items-center">
         <Image src="/age.svg" alt="Rank" height={25} width={25} />
@@ -15,7 +25,7 @@ export default function StatsBar({ rank, age, salary }) {
       </li>
       <li className="flex gap-2 items-center">
         <Image src="/salary.svg" alt="Rank" height={25} width={25} />
-        <Eyebrow className="!mb-0">Salary: ${formattedSalary}K</Eyebrow>
+        <Eyebrow className="!mb-0">Salary: ${formatSalary(salary)}K</Eyebrow>
       </li>
     </ul>
   );

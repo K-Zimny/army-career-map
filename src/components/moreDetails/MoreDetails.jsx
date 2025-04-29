@@ -4,6 +4,9 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import ComponentWrapper from "../componentwrapper/ComponentWrapper";
 import Eyebrow from "../eyebrow/Eyebrow";
+import ArrowIconWhite from "@/assets/icons/arrow-white.svg";
+import ArrowIconGold from "@/assets/icons/arrow-gold.svg";
+import AccordionWrapper from "../accordionwrapper/AccordionWrapper";
 
 const mockData = [
   {
@@ -143,17 +146,36 @@ export default function MoreDetails({ milestone }) {
         </ComponentWrapper>
       ) : detailsList.length > 0 ? (
         <ComponentWrapper>
-          <Eyebrow type="bigger">Search Results</Eyebrow>
-          <div className="space-y-6">
+          <h2 className="text-[27px] text-army-gold md:text-[36px]">
+            Keep Exploring
+          </h2>
+          <div className="">
             {detailsList.map((item, index) => (
-              <div key={index}>
-                <Eyebrow>
-                  <a className="underline" href={item.url}>
-                    {item.topic}
-                  </a>
-                </Eyebrow>
-                <p className="text-sm mt-2">{item.information}</p>
-              </div>
+              <AccordionWrapper
+                title={item.topic}
+                key={index}
+                className="!px-0 !py-2"
+              >
+                <div key={index}>
+                  <p className="text-sm mt-2">{item.information}</p>
+
+                  <div className="items-center inline-flex gap-[8px] self-center pr-2 group py-2 font-bold text-army-gold hover:text-army-white border-b-1 border-army-gold hover:border-army-white transition">
+                    <a className="" href={item.url}>
+                      Explore {item.topic}
+                    </a>
+                    <img
+                      src={ArrowIconGold}
+                      alt="Arrow Icon"
+                      className="group-hover:hidden"
+                    />
+                    <img
+                      src={ArrowIconWhite}
+                      alt="Arrow Icon"
+                      className="hidden group-hover:block"
+                    />
+                  </div>
+                </div>
+              </AccordionWrapper>
             ))}
           </div>
         </ComponentWrapper>

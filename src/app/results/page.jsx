@@ -8,6 +8,8 @@ import ProgressBar from "@/components/ProgressBar/ProgressBar";
 import Eyebrow from "@/components/eyebrow/Eyebrow";
 import ComponentWrapper from "@/components/componentwrapper/ComponentWrapper";
 import MoreDetails from "@/components/moreDetails/MoreDetails";
+import CustomText from "@/components/customtext/CustomText";
+import Image from "next/image";
 
 const ResultsPage = () => {
   const [results, setResults] = useState(null);
@@ -79,15 +81,32 @@ const ResultsPage = () => {
   }
 
   return (
-    <div className="bg-primary-army-black text-army-tan-light pt-18">
+    <div className="bg-primary-army-black text-primary-army-white">
       <Loader isLoading={isLoading} />
+
+      <Image
+        className="max-w-3xl w-full mb-8 mx-auto"
+        src="/jane-old.jpg"
+        alt="Jane Doe"
+        width={768}
+        height={554}
+      />
       <div className="p-4 max-w-3xl mx-auto">
         <section className="mb-8">
-          <ProgressBar position="right" text="Results" />
-          <Eyebrow type="bigger" className="mt-12 mb-12">
-            Final Career Path Summary
-          </Eyebrow>
-          <h1 className="text-3xl mb-8 font-bold">Your Career Path Results</h1>
+          <CustomText
+            segments={[
+              {
+                text: "Take the ",
+                className:
+                  "text-[36px] md:text-[72px] font-normal text-army-tan-light",
+              },
+              {
+                text: "Next Step",
+                className:
+                  "text-[36px] md:text-[72px] font-normal text-army-gold",
+              },
+            ]}
+          />
           <ComponentWrapper>
             <p className="text-lg">{results.description}</p>
           </ComponentWrapper>
@@ -97,11 +116,11 @@ const ResultsPage = () => {
 
         <section className="mt-8">
           <button
-            className={`text-lg uppercase text-center w-full p-[18px] rounded-[9px] mb-[18px] border border-army-tan-light hover:bg-army-tan-light hover:text-primary-army-black hover:font-bold`}
             onClick={() => {
               useSimulationStore.getState().resetSession();
               window.location.href = "/";
             }}
+            className={`text-lg uppercase text-center w-full p-[18px] rounded-[9px] mb-[18px] border border-army-tan-light hover:bg-army-tan-light hover:text-primary-army-black hover:font-bold`}
           >
             Restart Simulation
           </button>
