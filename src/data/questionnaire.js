@@ -26,33 +26,23 @@ export const questions = [
   {
     id: "q3",
     allowMultiple: false,
-    question: "What kind of environment do you see yourself in?",
+    question: "Do you want to work full-time or part-time?",
     options: [
-      "Outdoors, hands-on, physical work",
-      "Indoors, technical or computer-based",
-      "Either one—I like variety",
+      "Full-time, I want to serve my country",
+      "Part-time, I want to balance work and life",
+      "I'm not sure yet",
     ],
   },
   {
     id: "q4",
-    allowMultiple: false,
-    question: "Are you looking to travel, or stay closer to home?",
-    options: [
-      "Yes, I would love to travel internationally",
-      "Yes, I would love to travel around the USA",
-      "I would prefer to stay closer to home",
-    ],
-  },
-  {
-    id: "q5",
     allowMultiple: true,
     question: "What are your personal goals?",
     subtitle: "Select all that apply.",
     options: [
       "Own my own home",
       "Start a family",
+      "Travel the world",
       "Retire early to enjoy life",
-      "Accomplish something great",
       "Learn high-tech or in-demand skills",
       "Serve with purpose and give back",
     ],

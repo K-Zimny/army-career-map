@@ -21,7 +21,7 @@ const Question = ({ question, selectedAnswer, onAnswer }) => {
   return (
     <div>
       <div className="text-[14px] mb-[45px] text-left font-bold uppercase leading-[36px] text-army-tan-light">
-        {question.id.replace("q", "")}/5
+        {question.id.replace("q", "")}/4
       </div>
       <h2 className="text-[27px] text-left font-normal leading-[36px] text-army-tan-light">
         {question.question}

@@ -7,6 +7,7 @@
   --Army-Gold: #ffcc01;
   --Army-Tan: #f1e4c7;
   --Army-Tan-Light: #fcf6eb;
+  --Army-Green: #2f372f;
   --background: var(--Primary-Army-Black-Light);
 }
 
@@ -19,6 +20,7 @@
   --color-medium-grey: var(--Medium-Grey);
   --color-army-tan: var(--Army-Tan);
   --color-army-tan-light: var(--Army-Tan-Light);
+  --color-army-green: var(--Army-Green);
   --color-background: var(--Primary-Army-Black);
 }
 
@@ -72,6 +74,22 @@ body {
 
 p {
   color: var(--color-army-tan-light);
+}
+
+/* Phone Wrapper */
+
+@media (min-width: 450px) {
+  .phone-wrapper {
+    border: 5px solid var(--color-army-tan-light);
+    border-radius: 40px;
+    height: 90vh;
+    max-height: 900px;
+    overflow: scroll;
+    scroll-bar: hidden;
+    scrollbar-width: 0px;
+    scrollbar-width: none;
+    /* margin-top: 56px; // Use if Walkthrough and Phone Wrapper is not aligned in center of screen. */
+  }
 }
 
 /* Animations */

@@ -26,10 +26,10 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="flex flex-row justify-center">
+      <div className="flex flex-row justify-center min-h-screen items-center gap-32">
         <Walkthrough />
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="p-6 min-h-screen rounded w-full max-w-[450px] bg-primary-army-black">
+        <div className="block max-w-[450px]">
+          <div className="p-6 rounded w-full bg-primary-army-black phone-wrapper">
             <ProgressBar position="left" text="Welcome" />
             <CustomText
               segments={[

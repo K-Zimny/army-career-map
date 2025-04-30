@@ -14,20 +14,25 @@ export default function Loader({ isLoading, currentMilestone }) {
   }, [currentMilestone]);
 
   useEffect(() => {
+    const phone = document.querySelector(".phone-wrapper");
     if (isLoading) {
-      // Force scroll to top
-      window.scrollTo({ top: 0, behavior: "instant" });
+      if (phone) {
+        // Force scroll to top
+        phone?.scrollTo({ top: 0, behavior: "instant" });
 
-      // Disable scrolling
-      document.body.style.overflow = "hidden";
-    } else {
-      // Re-enable scrolling
-      document.body.style.overflow = "";
+        // Disable scrolling
+        phone.style.overflow = "hidden";
+      } else {
+        // Re-enable scrolling
+        phone.style.overflow = "";
+      }
     }
 
     // Cleanup function (in case component unmounts mid-loading)
     return () => {
-      document.body.style.overflow = "";
+      if (phone) {
+        phone.style.overflow = "";
+      }
     };
   }, [isLoading]);
 

@@ -1,7 +1,5 @@
-"use effect";
-
 import "../styles/globals.css";
-import Walkthrough from "@/components/walkthrough/Walkthrough";
+import { EventProvider } from "@/contexts/EventContext";
 
 export const metadata = {
   title: "Army Career Map",
@@ -21,7 +19,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="relative">
-      <body className="max-w-7xl m-auto">{children}</body>
+      <body className="max-w-7xl m-auto">
+        <EventProvider>{children}</EventProvider>
+      </body>
     </html>
   );
 }

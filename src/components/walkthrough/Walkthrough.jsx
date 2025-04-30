@@ -2,123 +2,116 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { useEventContext } from "@/contexts/EventContext";
+
 import Header from "../text/Header";
 import Copy from "../text/Copy";
 import Eyebrow from "../eyebrow/Eyebrow";
 import ComponentWrapper from "../componentwrapper/ComponentWrapper";
 import Button from "../text/Button";
+import useSimulationStore from "@/store/simulationStore";
+import AccordionWrapper from "../accordionwrapper/AccordionWrapper";
 
 export default function Walkthrough() {
   const pathname = usePathname();
+  const { eventState } = useEventContext(); // year
+  const { path } = useSimulationStore(); // full career path
   const [content, setContent] = useState(null);
   const [isWalkthrough, setIsWalkthrough] = useState(true);
 
-  const Home = () => {
-    return (
-      <>
-        <Header type="h1" className="mt-4">
-          Meet Jane Rambo
-        </Header>
-        <Header>Description</Header>
-        <Copy>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-          libero omnis quo quasi facere tempore, explicabo voluptatibus unde
-          velit a adipisci dolor, ea aperiam dolorem animi perferendis iste
-          saepe placeat?
-        </Copy>
-        <Copy>Select "Get Started" in the App to begin your Journey.</Copy>
-        <Button>Walkthrough</Button>
-        <Button>UI/UX</Button>
-        <Button>Code</Button>
-        <Button>Reflections</Button>
-      </>
-    );
-  };
+  const Home = () => (
+    <>
+      <Header type="h1" className="mt-4">
+        Find a career that matters
+      </Header>
+      <Copy>
+        This app empowers Army prospects to take control of their career journey
+        by providing a clear, personalized roadmap beyond basic training.
+        Through a brief questionnaire, users receive tailored career paths based
+        on their goals and interests.
+      </Copy>
+      <Copy>
+        With interactive mapping and detailed role insights, the tool serves as
+        a professional guide for exploring career options and planning a
+        successful future in the Army.
+      </Copy>
+      <Copy>Select "Get Started" in the App to begin your Journey.</Copy>
+      <AccordionWrapper
+        title="Additional Resources"
+        className="pl-0 font-normal"
+      >
+        <Button href="/menu">Mission</Button>
+        <Button href="/menu">Code</Button>
+        <Button href="/menu">UI/UX</Button>
+        <Button href="/menu">Future</Button>
+      </AccordionWrapper>
+    </>
+  );
 
-  const Questionnaire = () => {
-    return (
-      <>
-        <Header type="h1" className="mt-4">
-          Questionnaire
-        </Header>
-        <Copy>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-          libero omnis quo quasi facere tempore, explicabo voluptatibus unde
-          velit a adipisci dolor, ea aperiam dolorem animi perferendis iste
-          saepe placeat?
-        </Copy>
-        <Copy>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-          libero omnis quo quasi facere tempore, explicabo voluptatibus unde
-          velit a adipisci dolor, ea aperiam dolorem animi perferendis iste
-          saepe placeat?
-        </Copy>
-        <Copy>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-          libero omnis quo quasi facere tempore, explicabo voluptatibus unde
-          velit a adipisci dolor, ea aperiam dolorem animi perferendis iste
-          saepe placeat?
-        </Copy>
-      </>
-    );
-  };
+  const Questionnaire = () => (
+    <>
+      <Header type="h1" className="mt-4">
+        Questionnaire
+      </Header>
+      <Header>Are you boots on the ground or behind the scenes?</Header>
+      <Copy>
+        We’ll ask you a few quick questions about your goals, skills, and
+        interests—like 'Do you want to lead a team?' or 'Are you into tech or
+        hands-on work?' In just a few taps, we’ll start building a career path
+        that’s all about you.
+      </Copy>
+    </>
+  );
 
   const Simulate = () => {
+    const milestone = path.find((m) => m.year === eventState); // Find milestone by year
+    if (!milestone) return <p>Loading simulation...</p>;
+
     return (
       <>
         <Header type="h1">Simulation</Header>
         <Copy>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-          libero omnis quo quasi facere tempore, explicabo voluptatibus unde
-          velit a adipisci dolor, ea aperiam dolorem animi perferendis iste
-          saepe placeat?
+          The simulation page processes questionnaire responses and sends them
+          to OpenAI's GPT model to generate a realistic career milestone,
+          including details like rank, salary, benefits, and achievements.
         </Copy>
         <Copy>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-          libero omnis quo quasi facere tempore, explicabo voluptatibus unde
-          velit a adipisci dolor, ea aperiam dolorem animi perferendis iste
-          saepe placeat?
+          At each milestone, the user selects from predefined choices, which are
+          appended to the simulation state and sent back to the model to
+          generate the next stage. This creates a dynamic, branching experience
+          tailored to the user's decisions.
         </Copy>
-        <Copy>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-          libero omnis quo quasi facere tempore, explicabo voluptatibus unde
-          velit a adipisci dolor, ea aperiam dolorem animi perferendis iste
-          saepe placeat?
-        </Copy>
+        <AccordionWrapper title="Milestone AI Response" className="pl-0">
+          <div className="text-[12px] text-army-tan-light">
+            <pre style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}>
+              {JSON.stringify(milestone, null, 2)}
+            </pre>
+          </div>
+        </AccordionWrapper>
       </>
     );
   };
 
-  const Results = () => {
-    return (
-      <>
-        <Header type="h1">Results</Header>
-        <Copy>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-          libero omnis quo quasi facere tempore, explicabo voluptatibus unde
-          velit a adipisci dolor, ea aperiam dolorem animi perferendis iste
-          saepe placeat?
-        </Copy>
-        <Copy>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-          libero omnis quo quasi facere tempore, explicabo voluptatibus unde
-          velit a adipisci dolor, ea aperiam dolorem animi perferendis iste
-          saepe placeat?
-        </Copy>
-        <Copy>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-          libero omnis quo quasi facere tempore, explicabo voluptatibus unde
-          velit a adipisci dolor, ea aperiam dolorem animi perferendis iste
-          saepe placeat?
-        </Copy>
-      </>
-    );
-  };
+  const Results = () => (
+    <>
+      <Header type="h1">Results</Header>
+      <Copy>
+        The results page completes the simulation by sending the user's full
+        journey—including questionnaire responses, selected choices, and the
+        generated career path—to an API powered by OpenAI's GPT model.
+      </Copy>
+      <Copy>
+        The API returns a final summary featuring a brief overview of the user’s
+        simulated career and a curated list of 3–5 official goarmy.com
+        resources. This marks the conclusion of the experience, providing a
+        structured recap and actionable links to explore real-world Army
+        opportunities.
+      </Copy>
+    </>
+  );
 
   const handleClick = () => {
-    setIsWalkthrough((prev) => {
-      return !prev;
-    });
+    setIsWalkthrough((prev) => !prev);
   };
 
   useEffect(() => {
@@ -139,7 +132,7 @@ export default function Walkthrough() {
         setContent(<p>Page not recognized.</p>);
         break;
     }
-  }, [pathname]);
+  }, [pathname, eventState, path]); // 👈 Include `path` for accurate milestone lookups
 
   return (
     <>
@@ -155,18 +148,20 @@ export default function Walkthrough() {
       <section
         className={`hidden ${
           isWalkthrough ? "xl:block" : "hidden"
-        } w-2/4 p-6 min-h-screen max-w-[550px] rounded`}
+        } w-2/4 max-w-[550px] rounded`}
       >
-        <ComponentWrapper className="sticky top-10">
+        <ComponentWrapper className="sticky top-10 !p-0 !my-16">
           <div>
             <Eyebrow>Army Career Map</Eyebrow>
             {content}
-            <button
-              className="mt-8 text-sm uppercase text-center p-[14px] rounded-[9px] mb-[9px] border border-army-tan-light hover:bg-army-tan-light hover:text-primary-army-black hover:font-bold"
-              onClick={handleClick}
-            >
-              Close
-            </button>
+            {pathname === "/" ? null : (
+              <button
+                className="mt-8 text-sm uppercase text-center p-[14px] rounded-[9px] mb-[9px] border border-army-tan-light hover:bg-army-tan-light hover:text-primary-army-black hover:font-bold"
+                onClick={handleClick}
+              >
+                Close
+              </button>
+            )}
           </div>
         </ComponentWrapper>
       </section>
