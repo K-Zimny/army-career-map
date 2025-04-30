@@ -62,7 +62,7 @@ const ResultsPage = () => {
     return (
       <div className="flex flex-row justify-center min-h-screen items-center gap-32">
         <Walkthrough />
-        <div className="bg-primary-army-black w-[450px] max-w-[450px] phone-wrapper relative">
+        <div className="bg-primary-army-black w-[450px] max-w-[450px] overflow-x-hidden phone-wrapper relative">
           <Loader isLoading={isLoading} />
         </div>
       </div>
@@ -81,7 +81,7 @@ const ResultsPage = () => {
     return (
       <div className="flex flex-row justify-center min-h-screen items-center gap-32">
         <Walkthrough />
-        <div className="bg-primary-army-black w-[450px] max-w-[450px] phone-wrapper relative">
+        <div className="bg-primary-army-black w-[450px] max-w-[450px] overflow-x-hidden phone-wrapper relative">
           <Loader isLoading={isLoading} />
         </div>
       </div>
@@ -92,8 +92,8 @@ const ResultsPage = () => {
     <>
       <div className="flex flex-row justify-center min-h-screen items-center gap-32">
         <Walkthrough />
-        <div className="bg-primary-army-black max-w-[450px] phone-wrapper relative">
-    <Loader isLoading={isLoading} />
+        <div className="bg-primary-army-black max-w-[450px] overflow-x-hidden phone-wrapper relative">
+          <Loader isLoading={isLoading} />
           <div
             className="relative bg-cover bg-center h-[735px] max-w-[450px] mx-auto mb-8"
             style={{ backgroundImage: "url('/Results-Dark.png')" }}

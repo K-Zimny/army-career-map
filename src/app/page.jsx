@@ -29,7 +29,7 @@ const HomePage = () => {
       <div className="flex flex-row justify-center min-h-screen items-center gap-32">
         <Walkthrough />
         <div className="block max-w-[450px]">
-          <div className="p-6 rounded w-full bg-primary-army-black phone-wrapper">
+          <div className="p-6 rounded w-full bg-primary-army-black phone-wrapper h-screen overflow-hidden">
             <ProgressBar position="left" text="Welcome" />
             <CustomText
               segments={[

@@ -143,7 +143,7 @@ const SimulatePage = () => {
     <div className="text-army-tan-light">
       <div className="flex flex-row justify-center min-h-screen items-center gap-32">
         <Walkthrough />
-        <div className="p-4 max-w-[450px] bg-primary-army-black phone-wrapper relative">
+        <div className="p-4 max-w-[450px] bg-primary-army-black overflow-x-hidden phone-wrapper relative">
           <Loader isLoading={isLoading} currentMilestone={currentMilestone} />
           <section className="mb-8">
             <ProgressBar position="middle" text="YOUR PATH" />

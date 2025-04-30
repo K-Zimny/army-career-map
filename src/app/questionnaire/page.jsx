@@ -61,8 +61,8 @@ const QuestionnairePage = () => {
     <>
       <div className="flex flex-row justify-center min-h-screen items-center gap-32">
         <Walkthrough />
-        <div className={`block w-[450px]`}>
-          <div className="p-6 rounded w-full max-w-[450px] bg-primary-army-black phone-wrapper relative">
+        <div className={`block w-[450px] overflow-x-hidden`}>
+          <div className="p-6 rounded w-full max-w-[450px] h-screen xl:h-auto bg-primary-army-black phone-wrapper relative">
             <Loader isLoading={isLoading} />
             <Questionnaire onSubmit={(answers) => handleSubmit(answers)} />
           </div>

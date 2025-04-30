@@ -19,12 +19,16 @@ export default function Loader({ isLoading, currentMilestone }) {
       if (phone) {
         // Force scroll to top
         phone?.scrollTo({ top: 0, behavior: "instant" });
+        // document.body.style.background = "var(--Primary-Army-Black)";
 
         // Disable scrolling
         phone.style.overflow = "hidden";
+        phone.style.height = "100dvh";
       } else {
         // Re-enable scrolling
         phone.style.overflow = "";
+        phone.style.height = "";
+        // document.body.style.background = "var(--Primary-Army-Black-Light)";
       }
     }
 
@@ -32,6 +36,8 @@ export default function Loader({ isLoading, currentMilestone }) {
     return () => {
       if (phone) {
         phone.style.overflow = "";
+        phone.style.height = "";
+        // document.body.style.background = "var(--Primary-Army-Black-Light)";
       }
     };
   }, [isLoading]);
