@@ -19,6 +19,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="relative">
+      <head>
+        <link rel="icon" href="/Favicon.png" />
+      </head>
       <body className="max-w-7xl m-auto">
         <EventProvider>{children}</EventProvider>
       </body>

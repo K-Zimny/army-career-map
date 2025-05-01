@@ -50,6 +50,7 @@ Important rules:
 - Only use information based on www.goarmy.com sources.
 - Write clearly, no filler words like 'Here is' or 'Below you will find'.
 - Keep information to less than 50 words.
+- Do not include any url related text in the information property. Ex: Remove text like: ([goarmy.com](https://www.goarmy.com/benefits/veterans/retirement?utm_source=openai))
 - Only output the JSON array. Do not include any commentary, explanations, or notes.
       `.trim(),
     });

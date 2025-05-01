@@ -157,9 +157,9 @@ export default function MoreDetails({ milestone }) {
                 className="!px-0 !py-2"
               >
                 <div key={index}>
-                  <p className="text-sm mt-2">{item.information}</p>
+                  <p className="text-sm mt-2 mb-4">{item.information}</p>
 
-                  <div className="items-center inline-flex gap-[8px] self-center pr-2 group py-2 font-bold text-army-gold hover:text-army-white border-b-1 border-army-gold hover:border-army-white transition">
+                  <div className="items-center inline-flex gap-[8px] self-center pr-2 group py-2 mb-6 font-bold text-army-gold hover:text-army-white border-b-1 border-army-gold hover:border-army-white transition">
                     <a className="" href={item.url}>
                       Explore {item.topic}
                     </a>

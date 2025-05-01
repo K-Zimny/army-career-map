@@ -144,92 +144,96 @@ const SimulatePage = () => {
       <div className="flex flex-row justify-center min-h-screen items-center gap-32">
         <Walkthrough />
         <div className="p-4 max-w-[450px] bg-primary-army-black overflow-x-hidden phone-wrapper relative">
-          <Loader isLoading={isLoading} currentMilestone={currentMilestone} />
-          <section className="mb-8">
-            <ProgressBar position="middle" text="YOUR PATH" />
-            <Eyebrow type="bigger" className="mt-12 mb-12">
-              Year {currentMilestone.year}
-            </Eyebrow>
-            <div className="text-3xl mb-8">
-              {currentHeadline && (
-                <CustomText segments={currentHeadline.segments} />
-              )}
-            </div>
-            <Image
-              className="w-full"
-              src={imageSrc}
-              alt="Jane Doe"
-              width={768}
-              height={554}
-              priority
-            />
-
-            <StatsBar
-              rank={currentMilestone.rank}
-              age={currentMilestone.age}
-              salary={currentMilestone.currentSalary}
-            />
-
-            <h2 className="text-[21px] mb-[18px]">Profile</h2>
-            <ComponentWrapper>
-              <p className="text-lg">{currentMilestone.description}</p>
-            </ComponentWrapper>
-
-            <AccordionWrapper
-              title={`${currentMilestone.rank.title} (${currentMilestone.rank.shortTitle})`}
-            >
-              <p className="mb-2">{currentMilestone.rank.description}</p>
-            </AccordionWrapper>
-
-            <AccordionWrapper title={currentMilestone.benefitInfo.title}>
-              <p className="mb-2">{currentMilestone.benefitInfo.description}</p>
-            </AccordionWrapper>
-
-            <AccordionWrapper title="Compensation">
-              <p className="mb-2">
-                Your total compensation is $
-                {currentMilestone.currentSalary +
-                  currentMilestone.benefitValueToDate}
-                , here's how it breaks down:
-              </p>
-              <ul className="list-disc list-inside mt-4 text-army-tan-light">
-                <li>Base Salary: ${currentMilestone.currentSalary}</li>
-                {Object.entries(currentMilestone.benefits).map(
-                  ([key, value], index) => (
-                    <li key={index}>
-                      {key.charAt(0).toUpperCase() + key.slice(1)}: ${value}
-                    </li>
-                  )
+          <div className="fade">
+            <Loader isLoading={isLoading} currentMilestone={currentMilestone} />
+            <section className="mb-8">
+              <ProgressBar position="middle" text="YOUR PATH" />
+              <Eyebrow type="bigger" className="mt-12 mb-12">
+                Year {currentMilestone.year}
+              </Eyebrow>
+              <div className="text-3xl mb-8">
+                {currentHeadline && (
+                  <CustomText segments={currentHeadline.segments} />
                 )}
-              </ul>
-            </AccordionWrapper>
-          </section>
+              </div>
+              <Image
+                className="w-full"
+                src={imageSrc}
+                alt="Jane Doe"
+                width={768}
+                height={554}
+                priority
+              />
 
-          <section className="mt-8">
-            <Eyebrow type="bigger" className="mb-12 mt-12">
-              What&apos;s Next
-            </Eyebrow>
-            <div className="flex flex-col">
-              {currentMilestone.year === 20 ? (
-                <button
-                  className="text-lg uppercase text-center w-full p-[18px] rounded-[9px] mb-[18px] border border-army-tan-light hover:bg-army-tan-light hover:text-primary-army-black hover:font-bold"
-                  onClick={() => (window.location.href = "/results")}
-                >
-                  See a Summary
-                </button>
-              ) : (
-                currentMilestone.choices.map((choice, index) => (
-                  <Option
-                    key={index}
-                    choice={choice}
-                    index={index}
-                    description={choice.description}
-                    onClick={() => handleChoice(choice)}
-                  />
-                ))
-              )}
-            </div>
-          </section>
+              <StatsBar
+                rank={currentMilestone.rank}
+                age={currentMilestone.age}
+                salary={currentMilestone.currentSalary}
+              />
+
+              <h2 className="text-[21px] mb-[18px]">Profile</h2>
+              <ComponentWrapper>
+                <p className="text-lg">{currentMilestone.description}</p>
+              </ComponentWrapper>
+
+              <AccordionWrapper
+                title={`${currentMilestone.rank.title} (${currentMilestone.rank.shortTitle})`}
+              >
+                <p className="mb-2">{currentMilestone.rank.description}</p>
+              </AccordionWrapper>
+
+              <AccordionWrapper title={currentMilestone.benefitInfo.title}>
+                <p className="mb-2">
+                  {currentMilestone.benefitInfo.description}
+                </p>
+              </AccordionWrapper>
+
+              <AccordionWrapper title="Compensation">
+                <p className="mb-2">
+                  Your total compensation is $
+                  {currentMilestone.currentSalary +
+                    currentMilestone.benefitValueToDate}
+                  , here's how it breaks down:
+                </p>
+                <ul className="list-disc list-inside mt-4 text-army-tan-light">
+                  <li>Base Salary: ${currentMilestone.currentSalary}</li>
+                  {Object.entries(currentMilestone.benefits).map(
+                    ([key, value], index) => (
+                      <li key={index}>
+                        {key.charAt(0).toUpperCase() + key.slice(1)}: ${value}
+                      </li>
+                    )
+                  )}
+                </ul>
+              </AccordionWrapper>
+            </section>
+
+            <section className="mt-8">
+              <Eyebrow type="bigger" className="mb-12 mt-12">
+                What&apos;s Next
+              </Eyebrow>
+              <div className="flex flex-col">
+                {currentMilestone.year === 20 ? (
+                  <button
+                    className="text-lg uppercase text-center w-full p-[18px] rounded-[9px] mb-[18px] border border-army-tan-light hover:bg-army-tan-light hover:text-primary-army-black hover:font-bold"
+                    onClick={() => (window.location.href = "/results")}
+                  >
+                    See a Summary
+                  </button>
+                ) : (
+                  currentMilestone.choices.map((choice, index) => (
+                    <Option
+                      key={index}
+                      choice={choice}
+                      index={index}
+                      description={choice.description}
+                      onClick={() => handleChoice(choice)}
+                    />
+                  ))
+                )}
+              </div>
+            </section>
+          </div>
         </div>
       </div>
     </div>

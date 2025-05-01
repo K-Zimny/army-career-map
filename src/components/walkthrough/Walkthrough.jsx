@@ -40,10 +40,27 @@ export default function Walkthrough() {
         title="Additional Resources"
         className="pl-0 font-normal"
       >
-        <Button href="/menu">Mission</Button>
-        <Button href="/menu">Code</Button>
-        <Button href="/menu">UI/UX</Button>
-        <Button href="/menu">Future</Button>
+        <Button className="pb-0" href="/menu">
+          Mission
+        </Button>
+        <Button
+          className="pb-0"
+          href="https://github.com/OMC-Critical-Mass/hackathon-career-map"
+        >
+          Code
+        </Button>
+        <Button
+          className="pb-0"
+          href="https://www.figma.com/proto/qXn5GKshgExGESr2t8oVmD/Hackathon?page-id=0%3A1&node-id=25-18777&viewport=-746%2C1112%2C0.21&t=PWBUKRUnAdPeqtrP-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=25%3A18777"
+        >
+          UI/UX
+        </Button>
+        <Button
+          className="pb-0"
+          href="https://goarmy.atlassian.net/wiki/spaces/~712020696170008ebc451cb8fa003ba2c15690/pages/899940380/Army+Career+Map+Dreamin"
+        >
+          Product Vision
+        </Button>
       </AccordionWrapper>
     </>
   );

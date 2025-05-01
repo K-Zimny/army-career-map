@@ -17,15 +17,17 @@ export default function StatsBar({ rank, age, salary }) {
     <ul className="mt-8 mb-[45px] flex flex-row justify-between gap-2">
       <li className="flex gap-2 items-center">
         <Image src="/rank.svg" alt="Rank" height={25} width={20} />
-        <Eyebrow className="!mb-0">Rank: {rank.shortTitle}</Eyebrow>
+        <Eyebrow className="!mb-0 !text-xs">Rank: {rank.shortTitle}</Eyebrow>
       </li>
       <li className="flex gap-2 items-center">
         <Image src="/age.svg" alt="Rank" height={25} width={25} />
-        <Eyebrow className="!mb-0">Age: {age}</Eyebrow>
+        <Eyebrow className="!mb-0 !text-xs">Age: {age}</Eyebrow>
       </li>
       <li className="flex gap-2 items-center">
         <Image src="/salary.svg" alt="Rank" height={25} width={25} />
-        <Eyebrow className="!mb-0">Salary: ${formatSalary(salary)}K</Eyebrow>
+        <Eyebrow className="!mb-0 !text-xs">
+          Salary: ${formatSalary(salary)}K
+        </Eyebrow>
       </li>
     </ul>
   );

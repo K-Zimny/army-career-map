@@ -85,12 +85,15 @@ p {
   .phone-wrapper {
     border: 5px solid var(--color-army-tan-light);
     border-radius: 40px;
-    height: 90vh;
-    max-height: 900px;
+    height: 80vh;
     overflow: scroll;
     scroll-bar: hidden;
     scrollbar-width: 0px;
     scrollbar-width: none;
+    max-height: 800px; /* Prevents Phone Wrapper from getting to big. */
+    max-width: 375px;
+    margin-inline: auto;
+    overflow-x: hidden;
     /* margin-top: 56px; // Use if Walkthrough and Phone Wrapper is not aligned in center of screen. */
   }
 }
@@ -112,4 +115,20 @@ p {
 
 .spinner-slow {
   animation: spin 10s linear infinite;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade {
+  animation: fadeIn 1s ease-out forwards;
 }

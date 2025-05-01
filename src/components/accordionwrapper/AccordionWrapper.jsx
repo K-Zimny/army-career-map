@@ -17,7 +17,7 @@ export default function AccordionWrapper({ title, children, className = "" }) {
         className="flex justify-between items-center cursor-pointer"
         onClick={toggleAccordion}
       >
-        <Eyebrow type="bigger" className="!mb-0">
+        <Eyebrow type="bigger" className="!mb-0 !pr-2">
           {title}
         </Eyebrow>
         <img
@@ -30,7 +30,14 @@ export default function AccordionWrapper({ title, children, className = "" }) {
           }`}
         />
       </div>
-      {isOpen && <div className="mt-4">{children}</div>}
+
+      <div
+        className={`transition-all duration-500 ease-in-out overflow-hidden ${
+          isOpen ? "max-h-[1000px] opacity-100 mt-4" : "max-h-0 opacity-0"
+        }`}
+      >
+        {children}
+      </div>
     </div>
   );
 }
