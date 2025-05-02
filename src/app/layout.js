@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 import { EventProvider } from "@/contexts/EventContext";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata = {
   title: "Army Career Map",
@@ -23,7 +24,10 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/Favicon.png" />
       </head>
       <body className="max-w-7xl m-auto">
-        <EventProvider>{children}</EventProvider>
+        <EventProvider>
+          {children}
+          <Analytics />
+        </EventProvider>
       </body>
     </html>
   );
