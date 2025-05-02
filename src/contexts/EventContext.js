@@ -1,4 +1,4 @@
-"use client"; // needed if this context will be used in client components
+"use client";
 
 import { createContext, useState, useContext } from "react";
 

@@ -1,7 +1,6 @@
 import React from "react";
 
 const ProgressBar = ({ position = "left", text = "" }) => {
-  // Map positions to Tailwind classes for dynamic placement
   const positionClasses = {
     left: "left-0",
     quarter: "left-1/4",
@@ -13,7 +12,6 @@ const ProgressBar = ({ position = "left", text = "" }) => {
     <>
       <div className="my-11 flex justfiy-center w-full">
         <div className="relative border-1 border-army-tan-light bg-army-tan-light w-full max-w-[450px] scale-[1.2]">
-          {/* Pill-shaped indicator */}
           <div
             className={`absolute top-1/2 transform -translate-y-1/2 ${positionClasses[position]} scale-[0.8] flex items-center justify-center px-[18px] py-[8px] mx-[16px] bg-primary-army-black text-army-tan-light text-[14px] font-normal uppercase rounded-full border-2 border-army-tan-light`}
           >

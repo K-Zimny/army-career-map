@@ -39,9 +39,9 @@ const useSimulationStore = create(
       },
     }),
     {
-      name: "simulation-store", // Key for localStorage
+      name: "simulation-store",
       onRehydrateStorage: () => () => {
-        console.log("Rehydrating state..."); // Debugging log
+        console.log("Rehydrating state...");
 
         persist.clearStorage("simulation-store"); // Clear storage on rehydration
 

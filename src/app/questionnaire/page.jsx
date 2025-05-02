@@ -35,7 +35,7 @@ const QuestionnairePage = () => {
       const data = await response.json();
       const { careerPath } = data;
 
-      console.log("Career Path from API:", careerPath); // Debugging log
+      console.log("Career Path from API:", careerPath);
 
       // Ensure careerPath is an object and add it to the path array
       if (careerPath && typeof careerPath === "object") {
@@ -48,7 +48,7 @@ const QuestionnairePage = () => {
       console.log(
         "Path in store after setPath:",
         useSimulationStore.getState().path
-      ); // Debugging log
+      );
 
       window.location.href = "/simulate";
     } catch (error) {
@@ -62,7 +62,7 @@ const QuestionnairePage = () => {
       <div className="flex flex-row justify-center min-h-screen items-center gap-32">
         <Walkthrough />
         <div className={`block w-[450px] overflow-x-hidden`}>
-          <div className="p-6 rounded w-full max-w-[450px] h-screen xl:h-auto bg-primary-army-black phone-wrapper relative">
+          <div className="p-6 rounded w-full max-w-[450px] h-screen xl:h-auto bg-primary-army-black phone-wrapper mx-auto relative">
             <div className="fade">
               <Loader isLoading={isLoading} />
               <Questionnaire onSubmit={(answers) => handleSubmit(answers)} />

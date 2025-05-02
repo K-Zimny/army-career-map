@@ -92,7 +92,6 @@ p {
     scrollbar-width: none;
     max-height: 800px; /* Prevents Phone Wrapper from getting to big. */
     max-width: 375px;
-    margin-inline: auto;
     overflow-x: hidden;
     /* margin-top: 56px; // Use if Walkthrough and Phone Wrapper is not aligned in center of screen. */
   }

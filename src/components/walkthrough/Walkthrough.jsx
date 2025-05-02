@@ -40,7 +40,10 @@ export default function Walkthrough() {
         title="Additional Resources"
         className="pl-0 font-normal"
       >
-        <Button className="pb-0" href="/menu">
+        <Button
+          className="pb-0"
+          href="https://www.figma.com/slides/dMHVbsCmmebe9OQIMrrjKj/Hackathon-Presentation?node-id=26-20&t=UCVtaf2ogWyX5xbG-1"
+        >
           Mission
         </Button>
         <Button

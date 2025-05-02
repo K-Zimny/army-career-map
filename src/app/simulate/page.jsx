@@ -29,7 +29,7 @@ const SimulatePage = () => {
     path,
   } = useSimulationStore();
   const { answers } = useQuestionnaireStore();
-  const { setEventState } = useEventContext(); // ✅ Use event context
+  const { setEventState } = useEventContext();
 
   useEffect(() => {
     let isMounted = true;
@@ -89,7 +89,6 @@ const SimulatePage = () => {
     }
   }, [currentMilestone]);
 
-  // ✅ Update context when year changes
   useEffect(() => {
     if (currentMilestone?.year) {
       setEventState(currentMilestone.year);
@@ -215,10 +214,10 @@ const SimulatePage = () => {
               <div className="flex flex-col">
                 {currentMilestone.year === 20 ? (
                   <button
-                    className="text-lg uppercase text-center w-full p-[18px] rounded-[9px] mb-[18px] border border-army-tan-light hover:bg-army-tan-light hover:text-primary-army-black hover:font-bold"
+                    className="text-lg uppercase text-center w-full p-[18px] rounded-[9px] mb-[18px] bg-army-tan-light text-primary-army-black hover:bg-army-gold hover:text-primary-army-black font-bold"
                     onClick={() => (window.location.href = "/results")}
                   >
-                    See a Summary
+                    Take the Next Step
                   </button>
                 ) : (
                   currentMilestone.choices.map((choice, index) => (

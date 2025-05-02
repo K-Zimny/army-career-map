@@ -13,7 +13,6 @@ const Question = ({ question, selectedAnswer, onAnswer }) => {
         : [...currentSelections, option]; // Add if not selected
       onAnswer(question.id, updatedSelections); // Update the answer with the new selections
     } else {
-      // For single selection, set the answer directly
       onAnswer(question.id, option);
     }
   };

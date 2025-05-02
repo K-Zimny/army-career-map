@@ -10,7 +10,7 @@ export default function Option({ index, description, onClick }) {
         </div>
         <button
           onClick={onClick}
-          className="p-4 w-full bg-army-tan-light text-primary-army-black rounded-b-2xl hover:bg-army-gold text-md font-semibold uppercase"
+          className="p-4 w-full bg-army-tan-light text-primary-army-black rounded-b-2xl xl:hover:bg-army-gold text-md font-semibold uppercase"
         >
           Option {index + 1}
         </button>

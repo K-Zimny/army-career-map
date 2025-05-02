@@ -7,7 +7,7 @@ export default function Button({ children, href, className }) {
       <div
         className={`items-center inline-flex gap-[8px] self-center pr-2 group py-2 font-bold text-army-gold hover:text-army-white border-b-1 border-army-gold hover:border-army-white transition ${className}`}
       >
-        <a className="" href={href}>
+        <a className="" href={href} target="_blank">
           {children}
         </a>
         <img

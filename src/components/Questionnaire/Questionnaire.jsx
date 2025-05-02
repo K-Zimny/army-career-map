@@ -14,7 +14,7 @@ const Questionnaire = ({ onSubmit }) => {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
-      onSubmit(answers); // Submit answers when all questions are answered
+      onSubmit(answers);
       console.log(answers);
     }
   };
@@ -44,7 +44,7 @@ const Questionnaire = ({ onSubmit }) => {
           </button>
         )}
         <button
-          className="group flex px-4 py-2 rounded font-bold text-army-tan-light hover:text-army-gold"
+          className="group flex px-4 py-2 rounded font-bold text-army-tan-light xl:hover:text-army-gold"
           onClick={handleNext}
         >
           <div className="self-center pr-2">
@@ -53,12 +53,12 @@ const Questionnaire = ({ onSubmit }) => {
           <img
             src={ArrowIconWhite}
             alt="Arrow Icon"
-            className="group-hover:hidden"
+            className="xl:group-hover:hidden"
           />
           <img
             src={ArrowIconGold}
             alt="Arrow Icon"
-            className="hidden group-hover:block"
+            className="hidden xl:group-hover:block"
           />
         </button>
       </div>

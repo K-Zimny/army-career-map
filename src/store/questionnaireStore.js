@@ -16,8 +16,8 @@ const useQuestionnaireStore = create(
       setHydrated: () => set({ hydrated: true }),
     }),
     {
-      name: "questionnaire-store", // Key for localStorage
-      getStorage: () => localStorage, // Use localStorage for persistence
+      name: "questionnaire-store",
+      getStorage: () => localStorage,
       onRehydrateStorage: () => (state) => {
         console.log("Rehydrating questionnaire store...");
         state?.setHydrated();

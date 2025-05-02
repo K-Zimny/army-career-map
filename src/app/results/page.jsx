@@ -11,7 +11,7 @@ import Image from "next/image";
 import Walkthrough from "@/components/walkthrough/Walkthrough";
 import ArrowIconGold from "@/assets/icons/arrow-gold.svg";
 import ArrowIconWhite from "@/assets/icons/arrow-white.svg";
-import CTA from "@/components/cta/CTA";
+import Button from "@/components/text/Button";
 
 const ResultsPage = () => {
   const [results, setResults] = useState(null);
@@ -99,9 +99,7 @@ const ResultsPage = () => {
               className="relative bg-cover bg-center h-[735px] max-w-[450px] mx-auto mb-8"
               style={{ backgroundImage: "url('/Results-Dark.png')" }}
             >
-              {/* Overlay Content */}
               <div className="absolute inset-0 px-[18px] pb-[45px] flex flex-col justify-end items-start gap-[36px]">
-                {/* Overlay Image */}
                 <Image
                   className="w-[339px] h-[233px] mb-4"
                   src="/BAYCB.png"
@@ -110,11 +108,10 @@ const ResultsPage = () => {
                   height={233}
                   priority
                 />
-
-                {/* Overlay Button */}
                 <button
                   href="https://www.goarmy.com"
                   className="items-start inline-flex pl-[18px] py-[12px] pr-[12px] group font-bold text-army-gold hover:text-army-white border border-army-gold hover:border-army-white transition"
+                  target="_blank"
                 >
                   <div className="self-center pr-[9px] text-md font-semibold uppercase">
                     talk to a recruiter
@@ -176,14 +173,12 @@ const ResultsPage = () => {
                     the Basic Officer Leadership Course (BOLC).
                   </div>
                   <div className="flex flex-col items-start gap-[8px]">
-                    <CTA
-                      href="https://www.goarmy.com/army-life/housing"
-                      text="Housing"
-                    />
-                    <CTA
-                      href="https://www.goarmy.com/army-life/intro-to-army-life/deployment"
-                      text="Deployment"
-                    />
+                    <Button href="https://www.goarmy.com/army-life/housing">
+                      Housing
+                    </Button>
+                    <Button href="https://www.goarmy.com/army-life/intro-to-army-life/deployment">
+                      Deployment
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -201,6 +196,7 @@ const ResultsPage = () => {
                 <button
                   href="https://www.goarmy.com/benefits/veterans/retirement"
                   className="items-start mb-[36px] inline-flex pl-[18px] py-[12px] pr-[12px] group font-bold text-army-gold hover:text-army-white border border-army-gold hover:border-army-white transition"
+                  target="_blank"
                 >
                   <div className="self-center pr-[9px] text-md font-semibold uppercase">
                     Retirement & Pension Plans
