@@ -42,7 +42,7 @@ export default function Walkthrough() {
       >
         <Button
           className="pb-0"
-          href="https://www.figma.com/slides/dMHVbsCmmebe9OQIMrrjKj/Hackathon-Presentation?node-id=26-20&t=UCVtaf2ogWyX5xbG-1"
+          href="https://drive.google.com/file/d/1IlQTmJjat036RlxDDe0ncyl0Cv-doeEV/view?usp=sharing"
         >
           Mission
         </Button>
@@ -58,12 +58,6 @@ export default function Walkthrough() {
         >
           UI/UX
         </Button>
-        <Button
-          className="pb-0"
-          href="https://goarmy.atlassian.net/wiki/spaces/~712020696170008ebc451cb8fa003ba2c15690/pages/899940380/Army+Career+Map+Dreamin"
-        >
-          Product Vision
-        </Button>
       </AccordionWrapper>
     </>
   );
@@ -73,12 +67,11 @@ export default function Walkthrough() {
       <Header type="h1" className="mt-4">
         Questionnaire
       </Header>
-      <Header>Are you boots on the ground or behind the scenes?</Header>
       <Copy>
-        We’ll ask you a few quick questions about your goals, skills, and
-        interests—like 'Do you want to lead a team?' or 'Are you into tech or
-        hands-on work?' In just a few taps, we’ll start building a career path
-        that’s all about you.
+        We'll ask you a few quick questions about your goals, skills, and
+        interests—like "Do you want to serve part-time or full-time?" or "Are
+        you into tech or hands-on work?" In just a few taps, we'll start
+        building a career path that's all about you.
       </Copy>
     </>
   );
